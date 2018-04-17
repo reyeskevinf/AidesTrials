@@ -22,6 +22,49 @@ Three new preventative aides drugs were tested in clinical trials in 2015. The t
 # Genvoyabub
 
 We will subset the data by sex to see if the drug is sex specific.
+```{r}
+genovoya <- xtabs (~infected +group, data=Genvoyabub) 
+genovoya
+```
+```{r}
+barchartGC (genovoya, type="percent")
+```
+In this barchart, it does looks like poeple who got AIDS and recieved Genvoyabub have a lowe occurance than those who got AIDS and and recieved the placebo. However, we cannot see a differnece in the group who didnt get AIDS.
+
+```{r}
+chisqtestGC(genovoya)
+```
+The p-value returned from the chi-squared test is 0.5735 which suggests that the probablity of returning a sample similar to this one is about %50 of the time. Since the p-value is higher than 5% we will fail to reject the null hypothesis, therefore there is not a relationship between recieving the vaccine and getting AIDS.
+
+
+```{r}
+GF<- filter(Genvoyabub, sex=="F")
+GF2<- xtabs (~infected +group, data=GF)
+```
+
+```{r}
+barchartGC (GF2, type="percent")
+```
+
+
+```{r}
+chisqtestGC(GF2)
+```
+
+
+```{r}
+GM<- filter (Genvoyabub, sex=="M")
+GM2<- xtabs (~infected +group, data=GM)
+```
+
+```{r}
+barchartGC(GM2, type="percent")
+```
+
+
+```{r}
+chisqtestGC(GM2)
+```
 
 
 # Atriplavast
