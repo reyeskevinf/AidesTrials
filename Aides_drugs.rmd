@@ -34,6 +34,59 @@ Atripla
 ```
 
 
+
+
+```{r}
+barchartGC (Atripla, type="percent")
+```
+
+
+```{r}
+chisqtestGC(Atripla)
+```
+
+
+##Conclusion
+
+Now for the Femaeles
+
+```{r}
+AF<- filter(Atriplavast, sex=="F")
+AF2<- xtabs (~infected +group, data=AF)
+AF2
+```
+
+
+```{r}
+barchartGC (AF2, type="percent")
+```
+
+
+```{r}
+chisqtestGC(AF2)
+```
+
+##Conclusion
+
+Now for the men
+```{r}
+AM<- filter (Atriplavast, sex=="M")
+AM2<- xtabs (~infected +group, data=AM)
+AM2
+```
+
+
+```{r}
+barchartGC (AM2, type="percent")
+```
+
+
+```{r}
+chisqtestGC(AM2)
+```
+
+##Conclusion
+
 # abacavirinol
 
 We will subset the data by sex to see if the drug is sex specific.
