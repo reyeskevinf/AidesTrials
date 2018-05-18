@@ -32,7 +32,31 @@ We will subset the data by sex to see if the drug is sex specific.
 Atripla <- xtabs (~infected +group, data=Atriplavast) 
 Atripla
 ```
+For group who was infected with <b>AIDS</b>, there were 103 who took Atriplavast, and 131 who took the placebo.
 
+For group who was infected with <b>None</b>, there were 2136 who took Atriplavast, and 2135 who took the placebo.
+
+<b>Infected vs. Group Two-way table: </b>
+
+```{r}
+rowPerc(Atripla)
+```
+
+For the people who were infected with <b>AIDS</b>, 44.02% took Atriplavast, and 55.59% took the placebo.
+
+For the people who were infected with <b>None</b>, 50.33% took Atriplavast and 49.67% took the placebo.
+
+After reviewing the numerical, people who were infected group with <b>AIDS</b> who took Atriplavast had a lower infection rate than those who took the placebo. The group who was <b>not</b> infected did not show much of a difference. 
+
+
+<b>Group vs. Infected table: </b>
+
+```{r}
+colPerc(Atripla)
+```
+For the people who took <b>Atriplavast</b>, 4.55% recieved AIDS, and 95.45% recieved none.
+
+For the people who took the <b>placebo</b>, 5.78% recieved AIDS, and 94.22% recieved none.
 
 
 
