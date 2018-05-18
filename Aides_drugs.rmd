@@ -34,8 +34,60 @@ We will subset the data by sex to see if the drug is sex specific.
 
 We will subset the data by sex to see if the drug is sex specific.
 
+```{r}
+Abaca <- xtabs (~infected +group, data=abacavirinol) 
+Abaca
+```
 
 
+```{r}
+barchartGC (Abaca, type="percent")
+```
 
 
+```{r}
+chisqtestGC(Abaca)
+```
 
+
+##Conclusion
+
+Now for the Femaeles
+
+```{r}
+BF<- filter(Atriplavast, sex=="F")
+BF2<- xtabs (~infected +group, data=BF)
+BF2
+```
+
+
+```{r}
+barchartGC (BF2, type="percent")
+```
+
+
+```{r}
+chisqtestGC(BF2)
+```
+
+
+##Conclusion 
+
+Now for the men
+
+```{r}
+BM<- filter (abacavirinol, sex=="M")
+BM2<- xtabs (~infected +group, data=BM)
+BM2
+```
+
+
+```{r}
+barchartGC (BM2, type="percent")
+```
+
+```{r}
+chisqtestGC(BM2)
+```
+
+##Conclusion
