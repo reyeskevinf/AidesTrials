@@ -45,12 +45,13 @@ GF2<- xtabs (~infected +group, data=GF)
 ```{r}
 barchartGC (GF2, type="percent")
 ```
-
+In the barchart above, females who got AIDS and recieved the Genvoyabub vaccine recieved a lower perectage of AIDS than the group who got the placebo. The group who did not get AIDS, the vaccine and placebo groups are nearly similar. 
 
 ```{r}
 chisqtestGC(GF2)
 ```
-
+The p-value returned from the chi-squared test is 0.5055 which suggests that the probablity of returning a sample similar to this one is about %50 of the time. Since the p-value is higher than 5% we will fail to reject the null hypothesis, therefore there is not a relationship between recieving the vaccine and getting AIDS, for women.
+ 
 
 ```{r}
 GM<- filter (Genvoyabub, sex=="M")
@@ -60,12 +61,12 @@ GM2<- xtabs (~infected +group, data=GM)
 ```{r}
 barchartGC(GM2, type="percent")
 ```
-
+The barchart above suggest that there is a small difference between the percent of occurance of AIDS, in the group who got AIDS. In that group, the group who recieved the Genvoyabub got AIDS less. For the group who did not get AIDS, there is no differnce shown.
 
 ```{r}
 chisqtestGC(GM2)
 ```
-
+The p-value returned from the chi-squared test is 1 which suggests that the probablity of returning a sample similar to this one is about %100 of the time. Since the p-value is higher than 5% we will fail to reject the null hypothesis, therefore there is not a relationship between recieving the vaccine and getting AIDS, for men.
 
 # Atriplavast
 
