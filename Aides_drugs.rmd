@@ -28,6 +28,10 @@ We will subset the data by sex to see if the drug is sex specific.
 
 We will subset the data by sex to see if the drug is sex specific.
 
+```{r}
+Atripla <- xtabs (~infected +group, data=Atriplavast) 
+Atripla
+```
 
 
 # abacavirinol
