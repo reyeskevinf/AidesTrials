@@ -36,6 +36,8 @@ For group who was infected with <b>AIDS</b>, there were 103 who took Atriplavast
 
 For group who was infected with <b>None</b>, there were 2136 who took Atriplavast, and 2135 who took the placebo.
 
+Lets take a further look into the data.
+
 <b>Infected vs. Group Two-way table: </b>
 
 ```{r}
@@ -48,6 +50,7 @@ For the people who were infected with <b>None</b>, 50.33% took Atriplavast and 4
 
 After reviewing the numerical, people who were infected group with <b>AIDS</b> who took Atriplavast had a lower infection rate than those who took the placebo. The group who was <b>not</b> infected did not show much of a difference. 
 
+Lets look at the groups
 
 <b>Group vs. Infected table: </b>
 
@@ -58,12 +61,16 @@ For the people who took <b>Atriplavast</b>, 4.55% recieved AIDS, and 95.45% reci
 
 For the people who took the <b>placebo</b>, 5.78% recieved AIDS, and 94.22% recieved none.
 
+After reviewing the numerical, people who were infected group with <b>AIDS</b> who took Atriplavast had a lower infection rate than those who took the placebo. The group who was <b>not</b> infected did not show much of a difference. 
 
+
+Now that we have reviewed the numerical data for, we will construct a bar chart to graphically see the data.
 
 ```{r}
 barchartGC (Atripla, type="percent")
 ```
 
+It appears that the people were infected with AIDS have a small difference in the ocuurence of it. The people who took Atriplavast recieved the virus less than those who took the placebo.
 
 ```{r}
 chisqtestGC(Atripla)
