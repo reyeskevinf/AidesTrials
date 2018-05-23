@@ -1,7 +1,7 @@
 ---
 title: "Aides Tests"
-author: "Dr K"
-date: "May 24, 2017"
+author: "Kevin Reyes"
+date: "May 22, 2018"
 output: html_document
 ---
 
@@ -18,9 +18,16 @@ Atriplavast<-read.csv(file="Atriplavast.csv",header=TRUE)
 
 Three new preventative aides drugs were tested in clinical trials in 2015. The trial designs were modeled after the famous RV_144 Aides Trials in Tailand in 2009.  Analyze and report on the apparent effectiveness of the three different drugs. Does sex of the participant seem to be a factor for any of the drugs?
 
+## Introduction
+In this study, we are testing the effectiveness of three drugs in helping to prevent the AIDS virus. We are interested in knowing whether sex of the participant seem to be a factor for any of the drugs. Additionally, we ant to know which if any drug would be recommended or told to avoid for a 32 year old female and a 27 year old male? The three drugs being tested are Genvoyabub, Abacavirinol, and Atriplavast. Each drug contains a respective .csv file with data including information on the participants; the group describes whether they recieved the drug or a placebo, sex describes the sex, and infected describes whether they were infected with AIDS or none. Genvoyabub contains data on 4924 participants, Abacavirinol contains 4400 participants, and Atriplavast has 4532 participants.
+
+## Methods 
+
+In order to find out if there is any of the three drugs are effective, we will split up the study into three respective sections, for Genvoyabub, Atriplavast, and Abacavirinol. Additionally, those sections will have three subsections: within the subsections, we will analyze the results of the drug in general, then for women, and finally for men. To find out if the drugs work, we will need to run a couple tests. A numerical test, using row and collumn percents will allow us see numerical results and compare the percentages between the different categories. This will give us an idea if the drug looks like it is going to work, by comparing the difference in infection rate to the placebo group. Next, a graphical test will take it further and show us if the drug makes a difference in the infection rate, by comparing the results to the infected group who took the placebo. Then, we will run an inferrential test to test the relationship bewteen the drug and AIDS. From the chi squared test, the p-value result will show if getting the AIDS virus is independent (not related, Null Hypothesis) or dependent (related, Alternative Hypothesis) of taking any of the three drugs: our threshold p-value to consider the null hypothesis true is 0.05, any value above will fail to reject the null and anything under will reject the null. After the: three tests have been ran, examined the results, and made inferences from the data, we will conclude the efectivness of the drug, in each subsection for the respective. Finally, after a final conclusions will be made of the effectivness of the three drugs, if the sex of the participant seemed to be a factor for any of the drugs, and the reccomendations for the 32 year old female and a 27 year old male. 
 
 # Genvoyabub
 
+Let us review the numerical results 
 
 ```{r}
 genovoya <- xtabs (~infected +group, data=Genvoyabub) 
@@ -61,7 +68,7 @@ For the people who took the <b>placebo</b>, 4.47% recieved AIDS, and 95.53% reci
 After reviewing the numerical data, people who took <b>Genovoyabub</b> had a slightly smaller AIDS infection rate than those who took the <b>placebo</b>. The groups where <b>not</b> infected reflect that small difference.
 
 
-Now that we have reviewed the numerical data for, we will construct a bar chart to graphically see the data.
+Now that we have reviewed the numerical data, we will construct a bar chart to examine the graphical results of the data.
 
 
 ```{r}
@@ -97,6 +104,7 @@ Now for the Femaeles
   <li><h3>Genvoyabub Females</h3></li>
 </ul>
 
+Let us review the numerical results
 
 ```{r}
 GF<- filter(Genvoyabub, sex=="F")
@@ -133,7 +141,7 @@ For the females who took the <b>placebo</b>, 5.04% recieved AIDS, and 94.96% rec
 After reviewing the numerical data, females who took <b>Genvoyabub</b> had a lower rate of AIDS infection than those who took the <b>placebo</b>. The difference is also reflected right under with the groups who were <b>not</b> infected.
 
 
-Now that we have reviewed the numerical data for, we will construct a bar chart to graphically see the data for women.
+Now that we have reviewed the numerical data for women, we will construct a bar chart to examine the graphical results of the data.
 
 
 ```{r}
@@ -167,6 +175,8 @@ Now for the men
   <li><h3>Genvoyabub males</h3></li>
 </ul>
 
+Let us review the numerical results
+
 ```{r}
 GM<- filter (Genvoyabub, sex=="M")
 GM2<- xtabs (~infected +group, data=GM)
@@ -175,7 +185,7 @@ GM2
 
 For group of males who were infected with <b>AIDS</b>, there were 47 who took Genvoyabub, and 48 who took the placebo.
 
-For group of females who was infected with <b>None</b>, there were 1184 who took Genvoyabub, and 1183 who took the placebo.
+For group of males who was infected with <b>None</b>, there were 1184 who took Genvoyabub, and 1183 who took the placebo.
 
 <b>Infected vs. Group Two-way table: </b>
 
@@ -202,7 +212,7 @@ For the males who took the <b>placebo</b>, 3.9% recieved AIDS, and 96.1% recieve
 After reviewing the numerical data, males who took <b>Genvoyabub</b> had a very small rate of AIDS infection than those who took the <b>placebo</b>, its almsot equal. The difference is also reflected right under with the groups who were <b>not</b> infected.
 
 
-Now that we have reviewed the numerical data for, we will construct a bar chart to graphically see the data for women.
+Now that we have reviewed the numerical data for men, we will construct a bar chart to examine the graphical results of the data.
 
 
 
@@ -210,7 +220,7 @@ Now that we have reviewed the numerical data for, we will construct a bar chart 
 barchartGC(GM2, type="percent")
 ```
 
-After inputing the data into a barchart, it appears that the female groups who were infected with AIDS reflect a tiny difference between the percent of occurance of AIDS, they are almost equal. The group who did not get AIDS, there is no differnce shown.
+After inputing the data into a barchart, it appears that the male groups who were infected with AIDS reflect a tiny difference between the percent of occurance of AIDS, they are almost equal. The group who did not get AIDS, there is no differnce shown.
 
 Let us begin by forming our two hypotheses:
 <ul>
@@ -232,7 +242,7 @@ From the three tests we ran on the data from the males. We have seen that there 
 
 # Atriplavast
 
-<h1></h1>
+Let us review the numerical results
 
 ```{r}
 Atripla <- xtabs (~infected +group, data=Atriplavast) 
@@ -272,7 +282,7 @@ For the people who took the <b>placebo</b>, 5.78% recieved AIDS, and 94.22% reci
 After reviewing the numerical data, people who took <b>Atriplavast</b> who took Atriplavast had a lower AIDS infection rate than those who took the <b>placebo</b>. The group who was <b>not</b> infected did not show much of a difference. 
 
 
-Now that we have reviewed the numerical data for, we will construct a bar chart to graphically see the data.
+Now that we have reviewed the numerical data, we will construct a bar chart to examine the graphical results of the data.
 
 ```{r}
 barchartGC (Atripla, type="percent")
@@ -308,6 +318,7 @@ Now we will look at the Atriplavast data for the Females
 
 We will subset the data by sex to see if the drug is sex specific.
 
+Let us review the numerical results
 
 ```{r}
 AF<- filter(Atriplavast, sex=="F")
@@ -344,7 +355,7 @@ For the females who took the <b>placebo</b>, 2.47% recieved AIDS, and 97.53% rec
 After reviewing the numerical data, females who took <b>Atriplavast</b> had almost double the rate of AIDS infection rate than those who took the <b>placebo</b>. The group who was <b>not</b> infected reflected a small difference.
 
 
-Now that we have reviewed the numerical data for, we will construct a bar chart to graphically see the data for women.
+Now that we have reviewed the numerical data for women, we will construct a bar chart to examine the graphical results of the data.
 
 
 ```{r}
@@ -378,6 +389,8 @@ Now for the men
 <ul>
   <li><h3>Atriplavast males</h3></li>
 </ul>
+
+Let us review the numerical results
 
 ```{r}
 AM<- filter (Atriplavast, sex=="M")
@@ -414,7 +427,7 @@ For the males who took the <b>placebo</b>, 9.09% recieved AIDS, and 90.91% recie
 After reviewing the numerical data, males who took <b>Atriplavast</b> had singificantly lower rate of AIDS infection rate, than those who took the <b>placebo</b>. The group who was <b>not</b> infected reflected a small difference.
 
 
-Now that we have reviewed the numerical data for men, we will construct a bar chart to graphically see the data for men.
+Now that we have reviewed the numerical data for men, we will construct a bar chart to examine the graphical results of the data.
 
 ```{r}
 barchartGC (AM2, type="percent")
@@ -443,9 +456,9 @@ Our p-value from the ChiSquared test is approxoimatley 0, which suggests that, u
 From the three tests we ran on the data from males, we have seen that there is a relationship between the Atriplavast and the rate of infenction, in men. We saw the relationship in all three tests. The numerical tests showed us the difference in infection rate between the treatment groups, this suggested men who took the drug were getting AIDS less. This was similar in the barchart where the relationship became visually apparent, the Atriplavast group with AIDS was much lower. And in the chi squared test, our p value suggested there is a relationship. From these tests we can conclude that there is a relationship for men between the AIDS virus and taking Atriplavast, men who take Atriplavast lower their porbability of not getting the AIDS virus.
 
 
-# abacavirinol
+# Abacavirinol
 
-
+Let us review the numerical results
 
 ```{r}
 Abaca <- xtabs (~infected +group, data=abacavirinol) 
@@ -485,7 +498,7 @@ For the people who took the <b>placebo</b>, 5.78% recieved AIDS, and 94.22% reci
 After reviewing the numerical data, people who took <b>Abacavirinol</b> had a similar AIDS infection rate than those who took the <b>placebo</b>. The group who was <b>not</b> infected did not show much of a difference either.
 
 
-Now that we have reviewed the numerical data for, we will construct a bar chart to graphically see the data.
+Now that we have reviewed the numerical data, we will construct a bar chart to examine the graphical results of the data.
 
 ```{r}
 barchartGC (Abaca, type="percent")
@@ -520,6 +533,8 @@ Now for the Femaeles
 <ul>
   <li><h3>Abacavirinol Females</h3></li>
 </ul>
+
+Let us review the numerical results
 
 ```{r}
 BF<- filter(abacavirinol, sex=="F")
@@ -556,7 +571,7 @@ For the females who took the <b>placebo</b>, 5.73% recieved AIDS, and 94.27% rec
 After reviewing the numerical data, females who took <b>Abacavirinol</b> had a lower rate of AIDS infection than those who took the <b>placebo</b>. The difference is also reflected right under with the groups who was <b>not</b> infected.
 
 
-Now that we have reviewed the numerical data for, we will construct a bar chart to graphically see the data for women.
+Now that we have reviewed the numerical data for women, we will construct a bar chart to examine the graphical results of the data.
 
 
 ```{r}
@@ -588,6 +603,8 @@ Now for the men
 <ul>
   <li><h3>Abacavirinol males</h3></li>
 </ul>
+
+Let us review the numerical results
 
 ```{r}
 BM<- filter (abacavirinol, sex=="M")
@@ -624,7 +641,7 @@ For the males who took the <b>placebo</b>, 5.27% recieved AIDS, and 94.73% recie
 After reviewing the numerical data, males who took <b>Abacavirinol</b> had a higher rate of AIDS infection than those who took the <b>placebo</b>. The difference is also reflected right under with the groups who were <b>not</b> infected.
 
 
-Now that we have reviewed the numerical data for men, we will construct a bar chart to graphically see the data.
+Now that we have reviewed the numerical data for men, we will construct a bar chart to examine the graphical results of the data.
 
 ```{r}
 barchartGC (BM2, type="percent")
@@ -647,3 +664,19 @@ Our p-value from the chi squared test is approxoimatley 0.0926, which suggests t
 <h5>Conclusion</h5> 
 
 From the three tests we ran on the data from males, we have seen that getting the AIDS virus is dependent (not related) of taking Abacavirinol. We saw the evidence outlined in the numerical test, barchart, and chi squared test. The barchart and numerical tests shows us that men who take Abacavirinol had a higher occurrence of AIDS. Our chi squared test showed us, for men, there is not a relationship between getting the AIDS virus is and taking Abacavirinol.. From these tests we can conclude that, men who take Abacavirinol increase their probablity of getting the AIDS virus. This shows us that Abacavirinol does not work for preventing the AIDS virus, for men, and it also suggests that it will increase the risk of getting infected with AIDS. 
+
+
+# Results and Final Conclusions
+
+In this study, we found that from the three drugs: Genavoyabub does not work to treat AIDS. For Genvoyabub, The differences in the infected group who took the drug compared to the results of the placebo group were too small, making the groups almost equal. Which suggested that, it did not matter whether or not someone took Genvoyabub, so it does not work effectivley to prevent the AIDS virus. In Atriplavast and Abacavirinol, there was a similar outcome Genavoyabub, even though Atriplavast and Abacavirinol did lower the rate of occurence, it was barley anything. Therefore, it did not matter whether or not someone took the drug or the placebo, so Atriplavast and Abacavirinol also do not work effectivley to prevent the AIDS virus. 
+
+When we ran the tests and examined the results to understand if if the sex of the participant seemed to be a factor, different results were found than the ones listed above. For <b>women</b>, Genovoyabub was found to not be effective, because data suggested that it made no difference on the rate of AIDS infection whether a woman took Genovoyabub or the placebo. Atriplavast was also not effective and considered a risk for women, because the results from the data reflected a lower AIDS infection rate in the placebo group; this suggested that women who take Atriplavast will increase their chances of getting infected with AIDS. The only drug found to be effective for AIDS and women was Abacavirinol, the results from the tests suggested that women who were in the group infected with AIDS who took Abacavirinol had a noticeably lower occurence then those who took the placebo. The low p-value also further supports that, for women, getting the AIDS virus is dependent(related) to taking Abacavirinol.
+
+For the <b>men</b>, Genvoyabub was found to not work effectivley to prevent the AIDS virus. The differences in the infected group who took the drug compared to the results of the placebo group were too small, making the groups almost equal. Which suggested that, it did not matter whether or not someone took Genvoyabub. Abacavirinol was also not effective and considered a risk for men, because the results from the data reflected a lower AIDS infection rate in the placebo group; this suggested that women who take Abacavirinol will increase their chances of getting infected with AIDS. The only drug found to be effective for AIDS and men was Atriplavast, the results from the tests suggested that men who were in the group infected with AIDS who took Atriplavast had almost 2x less the occurence then those who took the placebo. The significantly low p-value also further supports that, for men, getting the AIDS virus is dependent(related) to taking Atriplavast.
+
+Finally, between the three drugs, for the for the 32 year old female, it is reccomended to take <b>Abacavirinol</b>. The results from the tests on Abacavirinol data (for women) refect a respectfully lower rate of occurence of AIDS compared to the group who got AIDS and took the placebo; and the low p-value result suggests that there is a decent relationship for females between getting AIDS and taking Abacavirinol. The results show us that this drug is effective with AIDS and women. The other two drugs do not show effective results.
+
+For the 27 year old male, <b>Atriplavast</b> is reccomended to take. The results from the tests on Atriplavast data (for men) refect a rather large lower rate of occurence of AIDS, for those who took Atriplavast, compared to the group who got AIDS and took the placebo; and the significantly low p-value result suggests that there is a strong relationship,for males, between getting AIDS and taking Abacavirinol.The other two drugs do not show effective results.
+
+
+
