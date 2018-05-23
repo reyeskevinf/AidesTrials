@@ -27,6 +27,7 @@ genovoya <- xtabs (~infected +group, data=Genvoyabub)
 genovoya
 ```
 
+
 For group who was infected with <b>AIDS</b>, there were 101 who took Genovoyabub, and 110 who took the placebo.
 
 For group who was infected with <b>None</b>, there were 2361 who took Genovoyabub, and 2352 who took the placebo.
@@ -34,7 +35,7 @@ For group who was infected with <b>None</b>, there were 2361 who took Genovoyabu
 Lets take a further look into the data.
 <br />
 <br />
-<b>Infected vs. Group Two-way table: </b>
+<b>Infected vs. Group Two-way table:</b>
 
 ```{r}
 rowPerc(genovoya)
