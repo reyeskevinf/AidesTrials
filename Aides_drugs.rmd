@@ -32,48 +32,149 @@ We will subset the data by sex to see if the drug is sex specific.
 
 # abacavirinol
 
-We will subset the data by sex to see if the drug is sex specific.
+
 
 ```{r}
 Abaca <- xtabs (~infected +group, data=abacavirinol) 
 Abaca
 ```
 
+For group who was infected with <b>AIDS</b>, there were 118 who took Abacavirinol, and 121 who took the placebo.
+
+For group who was infected with <b>None</b>, there were 2082 who took Abacavirinol, and 2079 who took the placebo.
+
+Lets take a further look into the data.
+<br />
+<br />
+<b>Infected vs. Group Two-way table: </b>
+
+```{r}
+rowPerc(Abaca)
+```
+
+For the people who were infected with <b>AIDS</b>, 49.37% took Abacavirinol, and 50.63% took the placebo.
+
+For the people who were infected with <b>None</b>, 50.04% took Abacavirinol and 49.96% took the placebo.
+
+After reviewing the numerical data, people who were infected group with <b>AIDS</b> who took Abacavirinol had almost the similar infection rate than those who took the placebo. The group who was <b>not</b> infected did not show much of a difference either. 
+
+Lets look at the groups
+
+<b>Group vs. Infected Two-way table: </b>
+
+```{r}
+colPerc(Abaca)
+```
+For the people who took <b>Atriplavast</b>, 4.55% recieved AIDS, and 95.45% recieved none.
+
+For the people who took the <b>placebo</b>, 5.78% recieved AIDS, and 94.22% recieved none.
+
+After reviewing the numerical data, people who took <b>Abacavirinol</b> had a similar AIDS infection rate than those who took the <b>placebo</b>. The group who was <b>not</b> infected did not show much of a difference either.
+
+
+Now that we have reviewed the numerical data for, we will construct a bar chart to graphically see the data.
 
 ```{r}
 barchartGC (Abaca, type="percent")
 ```
+
+After inputing the data into a barchart, it appears that the groups who were infected with AIDS have a simimar ocuurence rate of the virus. The group who did not get infected shows no difference.
+
+Now that we have graphically viewed that data, we will run an inferrential test to test their relationship 
+
+Let us begin by forming our two hypotheses:
+
+<ul>
+  <li>$H_0:$ Getting the AIDS virus is independent of taking Abacavirinol.</li>
+  <li>$H_A:$ Getting the AIDS virus is dependent of taking Abacavirinol.</li>
+</ul>
 
 
 ```{r}
 chisqtestGC(Abaca)
 ```
 
+Our p-value from the ChiSquared test is approxoimatley 0.8942, which suggests that, under a true null hypothesis, we have about a 0.89% probablity of returning a sample like this. The p-value must surpass the threshold of .05, in order to accept our null hypothesis as true. Since it does, we will accept the null hypothesis as true. Therefore, there is not a relationship between getting AIDS and taking Abacavirinol.
 
-##Conclusion
+<h5>Conclusion</h5>
+
+From the three tests we ran on the data for AIDS and Abacavirinol, we have seen that there is not a relationship between the drug and getting the virus. We saw the evidence outlined in the numerical test, barchart, and chi squared test. They showed us that people who take Abacavirinol had a slightly equal occurrence of AIDS than those who took the placebo. From these tests we can conclude that, Abacavirinol does not work effectivley to treat the AIDS virus.
+
+Now, we will subset the data by sex to see if the drug is sex specific.
 
 Now for the Femaeles
 
+<ul>
+  <li><h3>Abacavirinol Females</h3></li>
+</ul>
+
 ```{r}
-BF<- filter(Atriplavast, sex=="F")
+BF<- filter(abacavirinol, sex=="F")
 BF2<- xtabs (~infected +group, data=BF)
 BF2
 ```
+
+For group of females who were infected with <b>AIDS</b>, there were 53 who took Abacavirinol, and 28 who took the placebo.
+
+For group of females who was infected with <b>None</b>, there were 1080 who took Abacavirinol, and 1105 who took the placebo.
+
+<b>Infected vs. Group Two-way table: </b>
+
+```{r}
+rowPerc(BF2)
+```
+
+For the females who were infected with <b>AIDS</b>, 38.83% took Abacavirinol, and 61.17% took the placebo.
+
+For the females who were infected with <b>None</b>, 50.55% took Abacavirinol and 49.45% took the placebo.
+
+After reviewing the numerical data, women in the <b>AIDS</b> infected group, who took Abacavirinol had a noticeably lower infection rate than those who took the placebo. The group who was <b>not</b> infected did not show much of a difference. 
+
+<b>Group vs. Infected Two-way table: </b>
+
+```{r}
+colPerc(BF2)
+```
+
+For the females who took <b>Abacavirinol</b>, 3.64% recieved AIDS, and 5.73% recieved none.
+
+For the females who took the <b>placebo</b>, 5.73% recieved AIDS, and 94.27% recieved none.
+
+After reviewing the numerical data, females who took <b>Abacavirinol</b> had a lower rate of AIDS infection than those who took the <b>placebo</b>. The difference is also reflected right under with the groups who was <b>not</b> infected.
+
+
+Now that we have reviewed the numerical data for, we will construct a bar chart to graphically see the data for women.
 
 
 ```{r}
 barchartGC (BF2, type="percent")
 ```
 
+After inputing the data into a barchart, it appears that the female groups who were infected with AIDS have a large difference in the ocuurence. The females who took Abacavirinol recieved the virus at a noticeably lower rate than those who took the placebo. The group who did not shows no difference. 
+
+Now that we have graphically viewed that data, we will run an inferrential test to test their relationship 
+
+Let us begin by forming our two hypotheses:
+<ul>
+ <li>$H_0:$ For women, getting the AIDS virus is independent of taking Abacavirinol.</li>
+  <li>$H_A:$ For women, getting the AIDS virus is dependent of taking Abacavirinol.</li>
+</ul>
 
 ```{r}
 chisqtestGC(BF2)
 ```
 
+Our p-value from the ChiSquared test is approxoimatley 0.0264, which suggests that, under a true null hypothesis, we have about a .02% probablity of returning a sample like this. The p-value must surpass the threshold of .05, in order to accept our null hypothesis as true. Since it does not, we will reject the null hypothesis, therefore there is a relationship for females between getting AIDS and taking Abacavirinol. 
 
-##Conclusion 
+<h5>Conclusion</h5> 
+
+From the three tests we ran on the data from females, we have seen that there is a relationship between the drug and the rate of infection. We saw the evidence outlined in the numerical test, barchart, and chi squared test. The barchart and numerical tests shows us that women who take Abacavirinol had a lower occurrence of AIDS. Our chi squared test showed us, for women, there is a relationship between getting the AIDS virus is and taking Abacavirinol.. From these tests we can conclude that, Women who take Abacavirinol reduce their probablity of getting the AIDS virus. This shows us that Abacavirinol works well for treating AIDS, in women. 
 
 Now for the men
+
+<ul>
+  <li><h3>Abacavirinol males</h3></li>
+</ul>
 
 ```{r}
 BM<- filter (abacavirinol, sex=="M")
@@ -81,13 +182,55 @@ BM2<- xtabs (~infected +group, data=BM)
 BM2
 ```
 
+For group of males who were infected with <b>AIDS</b>, there were 78 who took Abacavirinol, and 58 who took the placebo.
+
+For group of males who was infected with <b>None</b>, there were 1022 who took Abacavirinol, and 1042 who took the placebo.
+
+<b>Infected vs. Group Two-way table: </b>
+
+```{r}
+rowPerc(BM2)
+```
+
+For the males who were infected with <b>AIDS</b>, 57.35% took Abacavirinol, and 42.65% took the placebo.
+
+For the females who were infected with <b>None</b>, 49.52% took Abacavirinol and 50.48% took the placebo.
+
+After reviewing the numerical data, men in the <b>AIDS</b> infected group, who took Abacavirinol had a slightly higher infection rate than those in the group who took the placebo. The men who were <b>not</b> infected did not show much of a difference. 
+
+<b>Group vs. Infected Two-way table: </b>
+
+```{r}
+colPerc(BM2)
+```
+
+For the males who took <b>Abacavirinol</b>, 7.09% recieved AIDS, and 92.91% recieved none.
+
+For the males who took the <b>placebo</b>, 5.27% recieved AIDS, and 94.73% recieved none.
+
+After reviewing the numerical data, males who took <b>Abacavirinol</b> had a higher rate of AIDS infection than those who took the <b>placebo</b>. The difference is also reflected right under with the groups who were <b>not</b> infected.
+
+
+Now that we have reviewed the numerical data for men, we will construct a bar chart to graphically see the data.
 
 ```{r}
 barchartGC (BM2, type="percent")
 ```
 
+After inputing the data into a barchart, it appears that the male groups who were infected with the AIDS virus have a noticeable difference in the ocuurence. The males who took Abacavirinol recieved the virus at a higher rate than those who took the placebo. The group who did not shows no difference. 
+
+Let us begin by forming our two hypotheses:
+<ul>
+ <li>$H_0:$ For men, getting the AIDS virus is independent of taking Abacavirinol.</li>
+  <li>$H_A:$ For men, getting the AIDS virus is dependent of taking Abacavirinol.</li>
+</ul>
+
 ```{r}
 chisqtestGC(BM2)
 ```
 
-##Conclusion
+Our p-value from the ChiSquared test is approxoimatley 0.0926, which suggests that, under a true null hypothesis, we have about a .09% probablity of returning a sample like this. The p-value must surpass the threshold of .05, in order to accept our null hypothesis as true. Since it does, we fail to reject the null hypothesis, therefore there is not a relationship for males between getting AIDS and taking Abacavirinol. 
+
+<h5>Conclusion</h5> 
+
+From the three tests we ran on the data from males, we have seen that getting the AIDS virus is dependent (not related) of taking Abacavirinol. We saw the evidence outlined in the numerical test, barchart, and chi squared test. The barchart and numerical tests shows us that men who take Abacavirinol had a higher occurrence of AIDS. Our chi squared test showed us, for men, there is not a relationship between getting the AIDS virus is and taking Abacavirinol.. From these tests we can conclude that, men who take Abacavirinol increase their probablity of getting the AIDS virus. This shows us that Abacavirinol does not work for preventing the AIDS virus, for men, and it also suggests that it will increase the risk of getting infected with AIDS. 
