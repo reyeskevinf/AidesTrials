@@ -232,8 +232,215 @@ From the three tests we ran on the data from the males. We have seen that there 
 
 # Atriplavast
 
+<h1></h1>
+
+```{r}
+Atripla <- xtabs (~infected +group, data=Atriplavast) 
+Atripla
+```
+
+For group who was infected with <b>AIDS</b>, there were 103 who took Atriplavast, and 131 who took the placebo.
+
+For group who was infected with <b>None</b>, there were 2136 who took Atriplavast, and 2135 who took the placebo.
+
+Lets take a further look into the data.
+<br />
+<br />
+<b>Infected vs. Group Two-way table: </b>
+
+```{r}
+rowPerc(Atripla)
+```
+
+For the people who were infected with <b>AIDS</b>, 44.02% took Atriplavast, and 55.59% took the placebo.
+
+For the people who were infected with <b>None</b>, 50.33% took Atriplavast and 49.67% took the placebo.
+
+After reviewing the numerical data, people who were infected group with <b>AIDS</b> who took Atriplavast had a lower infection rate than those who took the placebo. The group who was <b>not</b> infected did not show much of a difference. 
+
+Lets look at the groups
+
+<b>Group vs. Infected Two-way table: </b>
+
+```{r}
+colPerc(Atripla)
+```
+For the people who took <b>Atriplavast</b>, 4.55% recieved AIDS, and 95.45% recieved none.
+
+For the people who took the <b>placebo</b>, 5.78% recieved AIDS, and 94.22% recieved none.
+
+After reviewing the numerical data, people who took <b>Atriplavast</b> who took Atriplavast had a lower AIDS infection rate than those who took the <b>placebo</b>. The group who was <b>not</b> infected did not show much of a difference. 
+
+
+Now that we have reviewed the numerical data for, we will construct a bar chart to graphically see the data.
+
+```{r}
+barchartGC (Atripla, type="percent")
+```
+
+It appears that the people were infected with AIDS have a small difference in the ocuurence of it. The people who took Atriplavast recieved the virus less than those who took the placebo.
+
+Now that we have graphically viewed that data, we will run an inferrential test to test their relationship 
+
+Let us begin by forming our two hypotheses:
+
+<ul>
+  <li>$H_0:$ Getting the AIDS virus is independent of taking Atriplavast.</li>
+  <li>$H_A:$ Getting the AIDS virus is dependent of taking Atriplavast.</li>
+</ul>
+```{r}
+chisqtestGC(Atripla)
+```
+
+Our p-value from the ChiSquared test is approxoimatley 3.285, which suggests that, under a true null hypothesis, we have about a 3.285% probablity of returning a sample like this. The p-value must surpass the threshold of .05, in order to accept our null hypothesis as true. Since it does, we will accept the null hypothesis as true. Therefore, there is not a relationship between getting AIDS and taking Atriplavast.
+
+
+<h5>Conclusion</h5>
+
+From the three tests we ran on Atriplavast we have seen that there is not a relationship between the drug and the rate of infection. This does not show us that Atriplavast works well for treating AIDS. 
+
+
+Now we will look at the Atriplavast data for the Females
+
+<ul>
+  <li><h3>Atriplavast Females</h3></li>
+</ul>
+
 We will subset the data by sex to see if the drug is sex specific.
 
+
+```{r}
+AF<- filter(Atriplavast, sex=="F")
+AF2<- xtabs (~infected +group, data=AF)
+AF2
+```
+
+For group of females who were infected with <b>AIDS</b>, there were 53 who took Atriplavast, and 28 who took the placebo.
+
+For group of females who was infected with <b>None</b>, there were 1080 who took Atriplavast, and 1105 who took the placebo.
+
+<b>Infected vs. Group Two-way table: </b>
+
+```{r}
+rowPerc(AF2)
+```
+
+For the females who were infected with <b>AIDS</b>, 65.43% took Atriplavast, and 34.57% took the placebo.
+
+For the females who were infected with <b>None</b>, 49.43% took Atriplavast and 50.57% took the placebo.
+
+After reviewing the numerical data, women in <b>AIDS</b> infected group, who took Atriplavast had a higher infection rate than those who took the placebo. The group who was <b>not</b> infected did not show much of a difference. 
+
+<b>Group vs. Infected Two-way table: </b>
+
+```{r}
+colPerc(AF2)
+```
+
+For the females who took <b>Atriplavast</b>, 4.68% recieved AIDS, and 95.45% recieved none.
+
+For the females who took the <b>placebo</b>, 2.47% recieved AIDS, and 97.53% recieved none.
+
+After reviewing the numerical data, females who took <b>Atriplavast</b> had almost double the rate of AIDS infection rate than those who took the <b>placebo</b>. The group who was <b>not</b> infected reflected a small difference.
+
+
+Now that we have reviewed the numerical data for, we will construct a bar chart to graphically see the data for women.
+
+
+```{r}
+barchartGC (AF2, type="percent")
+```
+
+After inputing the data into a barchart, it appears that the female groups who were infected with AIDS have a large difference in the ocuurence. The females who took Atriplavast recieved the virus at a higher rate than those who took the placebo. 
+
+Now that we have graphically viewed that data, we will run an inferrential test to test their relationship 
+
+Let us begin by forming our two hypotheses:
+<ul>
+ <li>$H_0:$ For women, getting the AIDS virus is independent of taking Atriplavast.</li>
+  <li>$H_A:$ For women, getting the AIDS virus is dependent of taking Atriplavast.</li>
+</ul>
+
+```{r}
+chisqtestGC(AF2)
+```
+
+Our p-value from the ChiSquared test is approxoimatley 0.0066, which suggests that, under a true null hypothesis, we have about a 0.006% probablity of returning a sample like this. The p-value must surpass the threshold of .05, in order to accept our null hypothesis as true. Since it does not, we will reject the null hypothesis, therefore there is a relationship for females between getting AIDS and taking Atriplavast. 
+
+<h5>Conclusion</h5>
+
+
+From the three tests we ran on the data from females, we have seen that there is a relationship between the drug and the rate of infection. We saw the differnces best in the barchart and the chi squared test. The barchart shows us that women who take Atriplavast had a higher occurrence of AIDS. From these tests we can conclude that, Women who take Atriplavast are more likely to get AIDS, and this does not show us that Atriplavast works well for treating AIDS in women. 
+
+
+Now for the men
+
+<ul>
+  <li><h3>Atriplavast males</h3></li>
+</ul>
+
+```{r}
+AM<- filter (Atriplavast, sex=="M")
+AM2<- xtabs (~infected +group, data=AM)
+AM2
+```
+
+For group of males who were infected with <b>AIDS</b>, there were 50 who took Atriplavast, and 103 who took the placebo.
+
+For group of males who was infected with <b>None</b>, there were 1083 who took Atriplavast, and 1030 who took the placebo.
+
+<b>Infected vs. Group Two-way table: </b>
+
+```{r}
+rowPerc(AM2)
+```
+
+For the males who were infected with <b>AIDS</b>, 32.68% took Atriplavast, and 67.32% took the placebo.
+
+For the males who were infected with <b>None</b>, 51.25% took Atriplavast and 48.75% took the placebo.
+
+After reviewing the numerical data, the men in the <b>AIDS</b> infected group, who took Atriplavast had a much lower infection rate than those who took the placebo. The group who was <b>not</b> infected did show a small difference. 
+
+<b>Group vs. Infected Two-way table: </b>
+
+```{r}
+colPerc(AM2)
+```
+
+For the males who took <b>Atriplavast</b>, 4.41% recieved AIDS, and 95.59% recieved none.
+
+For the males who took the <b>placebo</b>, 9.09% recieved AIDS, and 90.91% recieved none.
+
+After reviewing the numerical data, males who took <b>Atriplavast</b> had singificantly lower rate of AIDS infection rate, than those who took the <b>placebo</b>. The group who was <b>not</b> infected reflected a small difference.
+
+
+Now that we have reviewed the numerical data for men, we will construct a bar chart to graphically see the data for men.
+
+```{r}
+barchartGC (AM2, type="percent")
+```
+
+After inputing the data for men into a barchart, it appears that the male groups who were infected with AIDS have a large difference in the ocuurence. The males who took Atriplavast recieved the virus at a lower rate than those who took the placebo. 
+
+Now that we have graphically viewed that data, we will run an inferrential test to test their relationship 
+
+Let us begin by forming our two hypotheses:
+<ul>
+  <li>$H_0:$ For men, getting the AIDS virus is independent of taking Atriplavast.</li>
+  <li>$H_A:$ For men, getting the AIDS virus is dependent of taking Atriplavast.</li>
+</ul>
+
+
+```{r}
+chisqtestGC(AM2)
+```
+
+Our p-value from the ChiSquared test is approxoimatley 0, which suggests that, under a true null hypothesis, we have about a 0% probablity of returning a sample like this. This is a significatly low value, and the p-value must surpass the threshold of .05, in order to accept our null hypothesis as true. Since it does not, we will reject the null hypothesis, therefore there is definetly a relationship for males between having AIDS and taking Atriplavast.
+
+
+<h5>Conclusion</h5>
+
+From the three tests we ran on the data from males, we have seen that there is a relationship between the Atriplavast and the rate of infenction, in men. We saw the relationship in all three tests. The numerical tests showed us the difference in infection rate between the treatment groups, this suggested men who took the drug were getting AIDS less. This was similar in the barchart where the relationship became visually apparent, the Atriplavast group with AIDS was much lower. And in the chi squared test, our p value suggested there is a relationship. From these tests we can conclude that there is a relationship for men between the AIDS virus and taking Atriplavast, men who take Atriplavast lower their porbability of not getting the AIDS virus.
 
 
 # abacavirinol
