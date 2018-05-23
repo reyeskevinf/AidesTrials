@@ -26,7 +26,6 @@ We will subset the data by sex to see if the drug is sex specific.
 
 # Atriplavast
 
-We will subset the data by sex to see if the drug is sex specific.
 <h1></h1>
 
 ```{r}
@@ -92,7 +91,7 @@ Our p-value from the ChiSquared test is approxoimatley 3.285, which suggests tha
 
 <h5>Conclusion</h5>
 
-From the three test we ran on Atriplavast we have seen that there is not a relationship between the drug and the rate of infection. This does not show us that Atriplavast works well for treating AIDS. 
+From the three tests we ran on Atriplavast we have seen that there is not a relationship between the drug and the rate of infection. This does not show us that Atriplavast works well for treating AIDS. 
 
 
 Now we will look at the Atriplavast data for the Females
@@ -100,6 +99,9 @@ Now we will look at the Atriplavast data for the Females
 <ul>
   <li><h3>Atriplavast Females</h3></li>
 </ul>
+
+We will subset the data by sex to see if the drug is sex specific.
+
 
 ```{r}
 AF<- filter(Atriplavast, sex=="F")
