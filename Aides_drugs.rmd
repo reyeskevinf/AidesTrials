@@ -229,7 +229,7 @@ Let us begin by forming our two hypotheses:
 chisqtestGC(BM2)
 ```
 
-Our p-value from the ChiSquared test is approxoimatley 0.0926, which suggests that, under a true null hypothesis, we have about a .09% probablity of returning a sample like this. The p-value must surpass the threshold of .05, in order to accept our null hypothesis as true. Since it does, we fail to reject the null hypothesis, therefore there is not a relationship for males between getting AIDS and taking Abacavirinol. 
+Our p-value from the chi squared test is approxoimatley 0.0926, which suggests that, under a true null hypothesis, we have about a .09% probablity of returning a sample like this. The p-value must surpass the threshold of .05, in order to accept our null hypothesis as true. Since it does, we fail to reject the null hypothesis, therefore there is not a relationship for males between getting AIDS and taking Abacavirinol. 
 
 <h5>Conclusion</h5> 
 
